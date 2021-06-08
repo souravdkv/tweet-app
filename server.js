@@ -8,9 +8,9 @@ app.use(compression())
 
 
 
-app.use(express.static('./dist/durbaries'));
+app.use(express.static('./dist/tweet-app'));
 app.get('/*', function(req, res) {
-    res.sendFile('index.html', {root: 'dist/durbaries'})
+    res.sendFile('index.html', {root: 'dist/tweet-app'})
 })
 
 app.get('/events', function (req, res) {
