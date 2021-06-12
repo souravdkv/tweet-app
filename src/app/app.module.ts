@@ -23,6 +23,7 @@ import { PostTweetDialogComponent } from './post-tweet-dialog/post-tweet-dialog.
 import { UserTweetsComponent } from './user-tweets/user-tweets.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { ExternalTweetsComponent } from './external-tweets/external-tweets.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ExternalTweetsComponent } from './external-tweets/external-tweets.compo
     PostTweetDialogComponent,
     UserTweetsComponent,
     AllUsersComponent,
-    ExternalTweetsComponent
+    ExternalTweetsComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

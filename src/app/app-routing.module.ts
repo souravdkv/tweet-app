@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AllUsersComponent } from './all-users/all-users.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { TweetsComponent } from './tweets/tweets.component';
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path:'tweets', component:TweetsComponent},
   { path: '', redirectTo: '/tweets', pathMatch: 'full' },
   { path: 'my-tweets', component:UserTweetsComponent },
-  { path: 'all-users', component:AllUsersComponent }
+  { path: 'all-users', component:AllUsersComponent },
+  { path: 'forgot-password', component:ForgotPasswordComponent }
 ];
 
 @NgModule({

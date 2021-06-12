@@ -16,7 +16,6 @@ export class PostTweetDialogComponent implements OnInit {
     public toastComponent:ToastComponent) { }
 
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
     tweet: new FormControl(''),
   });
 
@@ -24,7 +23,8 @@ export class PostTweetDialogComponent implements OnInit {
   }
 
   postTweet(){
-    this.tweetService.postTweet(this.form.get('tweet').value,this.form.get('username').value).subscribe(tweetResponse =>{
+    let user = localStorage.getItem("username")
+    this.tweetService.postTweet(this.form.get('tweet').value,user).subscribe(tweetResponse =>{
       this.dialogRef.close();
     },error =>{
       this.toastComponent.openSnackBar("something went wrong !!! , try again")

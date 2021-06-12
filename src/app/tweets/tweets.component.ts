@@ -31,7 +31,7 @@ export class TweetsComponent implements OnInit {
     let username = localStorage.getItem("username");
     if(username){
       const dialogRef = this.dialog.open(PostTweetDialogComponent, {
-        width: '250px',
+        width: '800px',
       });
       dialogRef.afterClosed().subscribe(result => {
         this.tweetService.getAllTweets().subscribe(tweetItem =>{
