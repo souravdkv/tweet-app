@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { TweetServiceService } from '../services/tweet-service.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { PostTweetDialogComponent } from '../post-tweet-dialog/post-tweet-dialog.component';
+import { ToastComponent } from '../toast/toast.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tweets',
@@ -9,24 +14,37 @@ export class TweetsComponent implements OnInit {
 
   
   tweets = [];
-  constructor() { }
+  constructor(public tweetService:TweetServiceService,
+    public dialog: MatDialog,
+    public toastService:ToastComponent,
+    public router:Router) { }
 
   ngOnInit() {
 
-     this.tweets = [
-      { id: 11, name: 'Dr Nice' },
-      { id: 12, name: 'Narco' },
-      { id: 13, name: 'Bombasto' },
-      { id: 14, name: 'Celeritas' },
-      { id: 15, name: 'Magneta' },
-      { id: 16, name: 'RubberMan' },
-      { id: 17, name: 'Dynama' },
-      { id: 18, name: 'Dr IQ' },
-      { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' }
-    ];
+    this.tweetService.getAllTweets().subscribe(tweetItem =>{
+      this.tweets = tweetItem;
+    })
 
+  }
 
+  postTweet(){
+    let username = localStorage.getItem("username");
+    if(username){
+      const dialogRef = this.dialog.open(PostTweetDialogComponent, {
+        width: '250px',
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.tweetService.getAllTweets().subscribe(tweetItem =>{
+          this.tweets = tweetItem;
+        })
+      });
+    }
+
+    else {
+      this.toastService.openSnackBar("please login first to post tweet")
+      this.router.navigateByUrl('/login')
+    }
+    
   }
 
 }

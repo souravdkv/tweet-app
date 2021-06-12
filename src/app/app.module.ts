@@ -14,10 +14,12 @@ import {
   MatCardModule,
   MatInputModule
 } from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
 import { TweetsComponent } from './tweets/tweets.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastComponent } from './toast/toast.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { PostTweetDialogComponent } from './post-tweet-dialog/post-tweet-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     RegisterComponent,
     HeaderComponent,
     TweetsComponent,
-    ToastComponent
+    ToastComponent,
+    PostTweetDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -41,9 +44,11 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatCardModule,
     MatInputModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [ToastComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[PostTweetDialogComponent]
 })
 export class AppModule { }

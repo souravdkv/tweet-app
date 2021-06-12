@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.loginService.loginUser(this.form.get('username').value,this.form.get('password').value).subscribe(item=>{
       this.toastComponent.openSnackBar(item.name +" logged in successfully")
+      localStorage.setItem("username",this.form.get('username').value)
     },error =>{
       this.toastComponent.openSnackBar(error.error.errors[0])
     })
