@@ -21,9 +21,13 @@
   <div class="button">
     <button type="submit" (click)="login()" mat-button>Login</button>
   </div>
+  <div class="button">
+    <button type="submit" [routerLink]="'/register'" mat-button>Dont"t have a Account ? Click to Sign Up</button>
+  </div>
+  <div class="button">
+    <button type="submit" [routerLink]="'/forgot-password'" mat-button>Forgot Password</button>
+  </div>
 
-  <p [routerLink]="'/register'"> Dont"t have a Account ? Click to Sign Up</p>
-  <p [routerLink]="'/forgot-password'"> Forgot Password</p>
 </form>
 </mat-card-content>
 </mat-card>

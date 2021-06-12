@@ -44,7 +44,9 @@
   <div class="button">
     <button type="submit" (click)="signUpUser()" mat-button>Create</button>
   </div>
-  <p [routerLink]="'/login'">Have a account ?  Click to Sign In</p>
+  <div class="button">
+    <button type="submit" [routerLink]="'/login'" mat-button>Have a account ?  Click to Sign In</button>
+  </div>
 
 </form>
 </mat-card-content>
