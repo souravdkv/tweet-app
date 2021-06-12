@@ -1,0 +1,10 @@
+<mat-card *ngFor="let list of users" class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{list.name}}</mat-card-title>
+      <mat-card-subtitle>{{list.username}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-button (click)="viewTweets(list.username)">View Tweets</button>
+    </mat-card-actions>
+  </mat-card>

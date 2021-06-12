@@ -20,4 +20,9 @@ export class TweetServiceService {
     }
     return this.http.post("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/"+username+"/add",tweetBody,{observe:'response' , withCredentials:true});
   }
+
+
+  getUserTweet(username):Observable<any>{
+    return this.http.get("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/"+username);
+  }
 }

@@ -20,6 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastComponent } from './toast/toast.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { PostTweetDialogComponent } from './post-tweet-dialog/post-tweet-dialog.component';
+import { UserTweetsComponent } from './user-tweets/user-tweets.component';
+import { AllUsersComponent } from './all-users/all-users.component';
+import { ExternalTweetsComponent } from './external-tweets/external-tweets.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { PostTweetDialogComponent } from './post-tweet-dialog/post-tweet-dialog.
     HeaderComponent,
     TweetsComponent,
     ToastComponent,
-    PostTweetDialogComponent
+    PostTweetDialogComponent,
+    UserTweetsComponent,
+    AllUsersComponent,
+    ExternalTweetsComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +55,6 @@ import { PostTweetDialogComponent } from './post-tweet-dialog/post-tweet-dialog.
   ],
   providers: [ToastComponent],
   bootstrap: [AppComponent],
-  entryComponents:[PostTweetDialogComponent]
+  entryComponents:[PostTweetDialogComponent, ExternalTweetsComponent]
 })
 export class AppModule { }
