@@ -15,6 +15,9 @@ import {
   MatInputModule
 } from '@angular/material';
 import { TweetsComponent } from './tweets/tweets.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastComponent } from './toast/toast.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { TweetsComponent } from './tweets/tweets.component';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    TweetsComponent
+    TweetsComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +39,11 @@ import { TweetsComponent } from './tweets/tweets.component';
     NoopAnimationsModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [ToastComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

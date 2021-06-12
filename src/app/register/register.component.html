@@ -4,25 +4,36 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
   <p>
     <mat-form-field>
-      <input type="text" matInput placeholder="Firstname" formControlName="firstname">
+      <input type="text" matInput placeholder="username" formControlName="username">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input type="text" matInput placeholder="firstName" formControlName="firstName">
     </mat-form-field>
   </p>
 
   <p>
     <mat-form-field>
-      <input type="text" matInput placeholder="Lastname" formControlName="lastname">
+      <input type="text" matInput placeholder="lastName" formControlName="lastName">
     </mat-form-field>
   </p>
 
   <p>
     <mat-form-field>
-      <input type="text" matInput placeholder="Username" formControlName="username">
+      <input type="text" matInput placeholder="email" formControlName="email">
     </mat-form-field>
   </p>
 
   <p>
     <mat-form-field>
-      <input type="password" matInput placeholder="Password" formControlName="password">
+      <input type="text" matInput placeholder="phoneNumber" formControlName="phoneNumber">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field>
+      <input type="password" matInput placeholder="password" formControlName="password">
     </mat-form-field>
   </p>
 
@@ -31,7 +42,7 @@
   </p>
 
   <div class="button">
-    <button type="submit" mat-button>Create</button>
+    <button type="submit" (click)="signUpUser()" mat-button>Create</button>
   </div>
 
 </form>

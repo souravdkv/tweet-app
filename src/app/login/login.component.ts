@@ -1,5 +1,7 @@
 import { Input, Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { LoginServiceService } from '../services/login-service.service';
+import { ToastComponent } from '../toast/toast.component';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(public loginService:LoginServiceService,
+    public toastComponent:ToastComponent) { }
 
   ngOnInit() {
   }
@@ -26,5 +29,13 @@ export class LoginComponent implements OnInit {
   @Input() error: string | null;
 
   @Output() submitEM = new EventEmitter();
+
+  login(){
+    this.loginService.loginUser(this.form.get('username').value,this.form.get('password').value).subscribe(item=>{
+      this.toastComponent.openSnackBar(item.name +" logged in successfully")
+    },error =>{
+      this.toastComponent.openSnackBar(error.error.errors[0])
+    })
+  }
 
 }
