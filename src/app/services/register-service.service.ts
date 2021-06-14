@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { APIURLS } from '../constants/APIUrls';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,6 @@ export class RegisterServiceService {
   constructor(private http: HttpClient) { }
 
   addUser(body):Observable<any>{
-    return this.http.post("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/register", body,{observe: 'response' , withCredentials:true});
+    return this.http.post(`${APIURLS.baseUrl}/register`, body,{observe: 'response' , withCredentials:true});
   }
 }
