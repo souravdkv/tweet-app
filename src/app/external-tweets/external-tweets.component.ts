@@ -18,14 +18,15 @@ export class ExternalTweetsComponent implements OnInit {
   tweets;
 
   ngOnInit() {
-    this.tweets = this.data
+    this.tweets = this.data[0]
   }
 
-  likeTweet(id) {
+  likeTweet(list) {
+    console.log("list ===> ",list)
     let loggedInUser = localStorage.getItem("username")
-    this.tweetService.likeTweet(loggedInUser, id).subscribe(likeItem => {
+    this.tweetService.likeTweet(loggedInUser, list.id).subscribe(likeItem => {
       this.toastComponent.openSnackBar("Liked")
-      this.tweetService.getUserTweet(this.tweets.username).subscribe(tweetItem => {
+      this.tweetService.getUserTweet(this.data[1]).subscribe(tweetItem => {
         this.tweets = tweetItem;
       })
     }, error => {
@@ -37,7 +38,7 @@ export class ExternalTweetsComponent implements OnInit {
     let loggedInUser = localStorage.getItem("username")
     this.tweetService.dislikeTweet(loggedInUser, id).subscribe(dislikeItem => {
       this.toastComponent.openSnackBar("Disliked")
-      this.tweetService.getUserTweet(this.tweets.username).subscribe(tweetItem => {
+      this.tweetService.getUserTweet(this.data[1]).subscribe(tweetItem => {
         this.tweets = tweetItem;
       })
     }, error => {
