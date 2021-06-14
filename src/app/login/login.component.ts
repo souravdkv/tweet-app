@@ -2,6 +2,9 @@ import { Input, Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LoginServiceService } from '../services/login-service.service';
 import { ToastComponent } from '../toast/toast.component';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-login',
@@ -11,6 +14,7 @@ import { ToastComponent } from '../toast/toast.component';
 export class LoginComponent implements OnInit {
 
   constructor(public loginService:LoginServiceService,
+    public router: Router,
     public toastComponent:ToastComponent) { }
 
   ngOnInit() {
@@ -34,6 +38,7 @@ export class LoginComponent implements OnInit {
     this.loginService.loginUser(this.form.get('username').value,this.form.get('password').value).subscribe(item=>{
       this.toastComponent.openSnackBar(item.name +" logged in successfully")
       localStorage.setItem("username",this.form.get('username').value)
+      this.router.navigateByUrl('/tweets')
     },error =>{
       this.toastComponent.openSnackBar(error.error.errors[0])
     })

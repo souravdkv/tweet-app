@@ -9,7 +9,7 @@ export class UsersServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getAllUsers():Observable<any>{
+  getAllUsers(): Observable<any> {
     return this.http.get("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/users/all");
   }
 }

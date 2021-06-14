@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path:'tweets', component:TweetsComponent},
-  { path: '', redirectTo: '/tweets', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'my-tweets', component:UserTweetsComponent },
   { path: 'all-users', component:AllUsersComponent },
   { path: 'forgot-password', component:ForgotPasswordComponent }
