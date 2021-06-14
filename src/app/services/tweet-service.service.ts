@@ -25,4 +25,8 @@ export class TweetServiceService {
   getUserTweet(username):Observable<any>{
     return this.http.get("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/"+username);
   }
+
+  deleteUserTweet(username,tweetID):Observable<any>{
+    return this.http.delete("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/"+username+"/delete/"+tweetID);
+  }
 }
