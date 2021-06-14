@@ -31,9 +31,9 @@ export class UserTweetsComponent implements OnInit {
     }
   }
 
-  deleteTweet(list) {
+  deleteTweet(id) {
     let loggedInUser = localStorage.getItem("username")
-    this.tweetService.deleteUserTweet(loggedInUser, list.id).subscribe(deleteDitem => {
+    this.tweetService.deleteUserTweet(loggedInUser, id).subscribe(deleteDitem => {
       this.toastComponent.openSnackBar("Deleted Successfully")
       this.tweetService.getUserTweet(loggedInUser).subscribe(tweetItem => {
         this.tweets = tweetItem;

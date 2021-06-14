@@ -29,4 +29,12 @@ export class TweetServiceService {
   deleteUserTweet(username,tweetID):Observable<any>{
     return this.http.delete("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/"+username+"/delete/"+tweetID);
   }
+
+  likeTweet(username,tweetID):Observable<any>{
+    return this.http.put<any>("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/"+username+"/like/"+tweetID,{observe:'response' , withCredentials:true});
+  }
+
+  dislikeTweet(username,tweetID):Observable<any>{
+    return this.http.put<any>("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/"+username+"/dislike/"+tweetID,{observe:'response' , withCredentials:true});
+  }
 }

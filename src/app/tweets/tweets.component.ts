@@ -17,6 +17,7 @@ export class TweetsComponent implements OnInit {
   constructor(public tweetService: TweetServiceService,
     public dialog: MatDialog,
     public toastService: ToastComponent,
+    public toastComponent: ToastComponent,
     public router: Router) { }
 
   ngOnInit() {
@@ -42,5 +43,23 @@ export class TweetsComponent implements OnInit {
         this.tweets = tweetItem;
       })
     });
+  }
+
+  likeTweet(id) {
+    let loggedInUser = localStorage.getItem("username")
+    this.tweetService.likeTweet(loggedInUser, id).subscribe(likeItem => {
+      this.toastComponent.openSnackBar("Liked")
+    }, error => {
+      this.toastComponent.openSnackBar("Something went wrong !!!!")
+    })
+  }
+
+  dislikeTweet(id) {
+    let loggedInUser = localStorage.getItem("username")
+    this.tweetService.dislikeTweet(loggedInUser, id).subscribe(dislikeItem => {
+      this.toastComponent.openSnackBar("Disliked")
+    }, error => {
+      this.toastComponent.openSnackBar("Something went wrong !!!!")
+    })
   }
 }
