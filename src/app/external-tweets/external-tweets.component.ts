@@ -25,6 +25,9 @@ export class ExternalTweetsComponent implements OnInit {
     let loggedInUser = localStorage.getItem("username")
     this.tweetService.likeTweet(loggedInUser, id).subscribe(likeItem => {
       this.toastComponent.openSnackBar("Liked")
+      this.tweetService.getUserTweet(this.tweets.username).subscribe(tweetItem => {
+        this.tweets = tweetItem;
+      })
     }, error => {
       this.toastComponent.openSnackBar("Something went wrong !!!!")
     })
@@ -34,6 +37,9 @@ export class ExternalTweetsComponent implements OnInit {
     let loggedInUser = localStorage.getItem("username")
     this.tweetService.dislikeTweet(loggedInUser, id).subscribe(dislikeItem => {
       this.toastComponent.openSnackBar("Disliked")
+      this.tweetService.getUserTweet(this.tweets.username).subscribe(tweetItem => {
+        this.tweets = tweetItem;
+      })
     }, error => {
       this.toastComponent.openSnackBar("Something went wrong !!!!")
     })
