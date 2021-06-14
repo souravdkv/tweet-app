@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { APIURLS } from '../constants/APIUrls';
 
 @Injectable({
   providedIn: 'root'
@@ -11,30 +12,30 @@ export class TweetServiceService {
 
 
   getAllTweets():Observable<any>{
-    return this.http.get("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/all");
+    return this.http.get(`${APIURLS.baseUrl}/all`);
   }
 
   postTweet(tweet,username):Observable<any>{
     let tweetBody = {
       "tweet": tweet
     }
-    return this.http.post("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/"+username+"/add",tweetBody,{observe:'response' , withCredentials:true});
+    return this.http.post(`${APIURLS.baseUrl}/${username}/add`,tweetBody,{observe:'response' , withCredentials:true});
   }
 
 
   getUserTweet(username):Observable<any>{
-    return this.http.get("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/"+username);
+    return this.http.get(`${APIURLS.baseUrl}/${username}`);
   }
 
   deleteUserTweet(username,tweetID):Observable<any>{
-    return this.http.delete("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/"+username+"/delete/"+tweetID);
+    return this.http.delete(`${APIURLS.baseUrl}/${username}/delete/${tweetID}`);
   }
 
   likeTweet(username,tweetID):Observable<any>{
-    return this.http.put<any>("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/"+username+"/like/"+tweetID,{observe:'response' , withCredentials:true});
+    return this.http.put<any>(`${APIURLS.baseUrl}/${username}/like/${tweetID}`,{observe:'response' , withCredentials:true});
   }
 
   dislikeTweet(username,tweetID):Observable<any>{
-    return this.http.put<any>("https://tweetapp-api.herokuapp.com/api/v1.0/tweets/"+username+"/dislike/"+tweetID,{observe:'response' , withCredentials:true});
+    return this.http.put<any>(`${APIURLS.baseUrl}/${username}/dislike/${tweetID}`,{observe:'response' , withCredentials:true});
   }
 }
