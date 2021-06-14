@@ -1,8 +1,9 @@
 import { Input, Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { RegisterServiceService } from '../services/register-service.service';
 import { ToastComponent } from '../toast/toast.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,8 +12,9 @@ import { ToastComponent } from '../toast/toast.component';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(public registerService:RegisterServiceService,
-    public toastComponent:ToastComponent) { }
+  constructor(public registerService: RegisterServiceService,
+    public router: Router,
+    public toastComponent: ToastComponent) { }
 
   ngOnInit() {
   }
@@ -23,7 +25,7 @@ export class RegisterComponent implements OnInit {
     username: new FormControl(''),
     password: new FormControl(''),
     email: new FormControl(''),
-    phoneNumber: new FormControl('')
+    phoneNumber: new FormControl('', Validators.pattern('^[0-9]*$'))
   });
 
   submit() {
@@ -35,12 +37,13 @@ export class RegisterComponent implements OnInit {
 
   @Output() submitEM = new EventEmitter();
 
-  signUpUser(){
-   this.registerService.addUser(this.form.value).subscribe(item =>{
-    this.toastComponent.openSnackBar(item.body.message)
-   } , error =>{
-     this.toastComponent.openSnackBar(error.error.errors[0])
-   })
+  signUpUser() {
+    this.registerService.addUser(this.form.value).subscribe(item => {
+      this.toastComponent.openSnackBar(item.body.message)
+      this.router.navigateByUrl('/login')
+    }, error => {
+      this.toastComponent.openSnackBar(error.error.errors[0])
+    })
   }
 
 }
