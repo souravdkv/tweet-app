@@ -36,8 +36,9 @@ export class AllUsersComponent implements OnInit {
   viewTweets(user) {
     this.tweetService.getUserTweet(user).subscribe(tweetItem => {
       const dialogRef = this.dialog.open(ExternalTweetsComponent, {
-        width: 'auto',
-        data: [tweetItem,user]
+        width: '500px',
+        data: [tweetItem,user],
+        height: '500px'
       });
     })
 
