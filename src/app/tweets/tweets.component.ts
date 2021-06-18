@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { PostTweetDialogComponent } from '../post-tweet-dialog/post-tweet-dialog.component';
 import { ToastComponent } from '../toast/toast.component';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-tweets',
@@ -25,6 +26,7 @@ export class TweetsComponent implements OnInit {
     if (username) {
       this.tweetService.getAllTweets().subscribe(tweetItem => {
         this.tweets = tweetItem;
+        this.updateTimeFromNow();
       })
     }
     else {
@@ -41,6 +43,7 @@ export class TweetsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.tweetService.getAllTweets().subscribe(tweetItem => {
         this.tweets = tweetItem;
+        this.updateTimeFromNow();
       })
     });
   }
@@ -51,6 +54,7 @@ export class TweetsComponent implements OnInit {
       this.toastComponent.openSnackBar("Liked")
       this.tweetService.getAllTweets().subscribe(tweetItem => {
         this.tweets = tweetItem;
+        this.updateTimeFromNow();
       })
     }, error => {
       this.toastComponent.openSnackBar("Something went wrong !!!!")
@@ -63,9 +67,17 @@ export class TweetsComponent implements OnInit {
       this.toastComponent.openSnackBar("Disliked")
       this.tweetService.getAllTweets().subscribe(tweetItem => {
         this.tweets = tweetItem;
+        this.updateTimeFromNow();
       })
     }, error => {
       this.toastComponent.openSnackBar("Something went wrong !!!!")
+    })
+  }
+
+
+  updateTimeFromNow(){
+    this.tweets.forEach(tweetItem =>{
+      tweetItem.fromNow = moment(tweetItem.postTime * 1000).fromNow()
     })
   }
 }
