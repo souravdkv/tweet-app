@@ -3,6 +3,7 @@ import { TweetServiceService } from '../services/tweet-service.service';
 import { ToastComponent } from '../toast/toast.component';
 import { TweetsComponent } from '../tweets/tweets.component';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-user-tweets',
@@ -23,6 +24,7 @@ export class UserTweetsComponent implements OnInit {
     if (loggedInUser) {
       this.tweetService.getUserTweet(loggedInUser).subscribe(tweetItem => {
         this.tweets = tweetItem;
+        this.updateTimeFromNow();
       })
     }
     else {
@@ -37,9 +39,16 @@ export class UserTweetsComponent implements OnInit {
       this.toastComponent.openSnackBar("Deleted Successfully")
       this.tweetService.getUserTweet(loggedInUser).subscribe(tweetItem => {
         this.tweets = tweetItem;
+        this.updateTimeFromNow();
       })
     }, error => {
       this.toastComponent.openSnackBar("Something went wrong !!!!")
+    })
+  }
+
+  updateTimeFromNow(){
+    this.tweets.forEach(tweetItem =>{
+      tweetItem.fromNow = moment(tweetItem.postTime * 1000).fromNow()
     })
   }
 

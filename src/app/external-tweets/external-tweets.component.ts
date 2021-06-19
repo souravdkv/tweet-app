@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { TweetServiceService } from '../services/tweet-service.service';
 import { ToastComponent } from '../toast/toast.component';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-external-tweets',
@@ -19,6 +20,7 @@ export class ExternalTweetsComponent implements OnInit {
 
   ngOnInit() {
     this.tweets = this.data[0]
+    this.updateTimeFromNow();
   }
 
   likeTweet(list) {
@@ -28,6 +30,7 @@ export class ExternalTweetsComponent implements OnInit {
       this.toastComponent.openSnackBar("Liked")
       this.tweetService.getUserTweet(this.data[1]).subscribe(tweetItem => {
         this.tweets = tweetItem;
+        this.updateTimeFromNow();
       })
     }, error => {
       this.toastComponent.openSnackBar("Something went wrong !!!!")
@@ -40,9 +43,16 @@ export class ExternalTweetsComponent implements OnInit {
       this.toastComponent.openSnackBar("Disliked")
       this.tweetService.getUserTweet(this.data[1]).subscribe(tweetItem => {
         this.tweets = tweetItem;
+        this.updateTimeFromNow();
       })
     }, error => {
       this.toastComponent.openSnackBar("Something went wrong !!!!")
+    })
+  }
+
+  updateTimeFromNow(){
+    this.tweets.forEach(tweetItem =>{
+      tweetItem.fromNow = moment(tweetItem.postTime * 1000).fromNow()
     })
   }
 
