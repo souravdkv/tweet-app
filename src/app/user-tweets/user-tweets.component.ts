@@ -25,6 +25,10 @@ export class UserTweetsComponent implements OnInit {
       this.tweetService.getUserTweet(loggedInUser).subscribe(tweetItem => {
         this.tweets = tweetItem;
         this.updateTimeFromNow();
+
+        if (this.tweets.length == 0) {
+          this.toastComponent.openSnackBar("No Tweets Found !!!")
+        }
       })
     }
     else {

@@ -1,3 +1,14 @@
+<div>
+  <form [formGroup]="searchUserForm">
+    <p>
+      <mat-form-field>
+        <input type="text" matInput id="searchUserInput" name="searchUserInput" placeholder="Search User..." formControlName="searchUserInput" required=true>
+      </mat-form-field>
+      <button mat-button [disabled]="searchUserForm.invalid" (click)="searchUser()">Search</button>
+    </p>
+  </form>
+</div>
+
 <mat-card *ngFor="let list of users" class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>

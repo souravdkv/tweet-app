@@ -27,6 +27,10 @@ export class TweetsComponent implements OnInit {
       this.tweetService.getAllTweets().subscribe(tweetItem => {
         this.tweets = tweetItem;
         this.updateTimeFromNow();
+
+        if (this.tweets.length == 0) {
+          this.toastComponent.openSnackBar("No Tweets Found !!!")
+        }
       })
     }
     else {

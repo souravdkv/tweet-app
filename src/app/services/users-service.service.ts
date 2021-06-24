@@ -13,4 +13,8 @@ export class UsersServiceService {
   getAllUsers(): Observable<any> {
     return this.http.get(`${APIURLS.baseUrl}/users/all`);
   }
+
+  searchUsers(searchInput): Observable<any> {
+    return this.http.get(`${APIURLS.baseUrl}/user/search/${searchInput}`);
+  }
 }

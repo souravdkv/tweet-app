@@ -21,6 +21,10 @@ export class ExternalTweetsComponent implements OnInit {
   ngOnInit() {
     this.tweets = this.data[0]
     this.updateTimeFromNow();
+
+    if (this.tweets.length == 0) {
+      this.toastComponent.openSnackBar("No Tweets Found !!!")
+    }
   }
 
   likeTweet(list) {
