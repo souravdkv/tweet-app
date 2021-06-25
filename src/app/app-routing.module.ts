@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AllUsersComponent } from './all-users/all-users.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { TweetsComponent } from './tweets/tweets.component';
-import { UserTweetsComponent } from './user-tweets/user-tweets.component';
+import { AllUsersComponent } from './dashboard/all-users/all-users.component';
+import { TweetsComponent } from './dashboard/tweets/tweets.component';
+import { UserTweetsComponent } from './dashboard/user-tweets/user-tweets.component';
 
 
 const routes: Routes = [

@@ -15,17 +15,17 @@ import {
   MatInputModule
 } from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
-import { TweetsComponent } from './tweets/tweets.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ToastComponent } from './toast/toast.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { PostTweetDialogComponent } from './post-tweet-dialog/post-tweet-dialog.component';
-import { UserTweetsComponent } from './user-tweets/user-tweets.component';
-import { AllUsersComponent } from './all-users/all-users.component';
-import { ExternalTweetsComponent } from './external-tweets/external-tweets.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
+import { TweetsComponent } from './dashboard/tweets/tweets.component';
+import { ToastComponent } from './dashboard/toast/toast.component';
+import { PostTweetDialogComponent } from './dashboard/post-tweet-dialog/post-tweet-dialog.component';
+import { UserTweetsComponent } from './dashboard/user-tweets/user-tweets.component';
+import { AllUsersComponent } from './dashboard/all-users/all-users.component';
+import { ExternalTweetsComponent } from './dashboard/external-tweets/external-tweets.component';
 
 @NgModule({
   declarations: [

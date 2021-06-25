@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginServiceService } from '../../services/login-service.service';
-import { ToastComponent } from '../../toast/toast.component';
 import { Router } from '@angular/router';
+import { ToastComponent } from 'src/app/dashboard/toast/toast.component';
 
 @Component({
   selector: 'app-forgot-password',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastComponent } from '../toast/toast.component';
 import { Router } from '@angular/router';
+import { ToastComponent } from '../dashboard/toast/toast.component';
 
 @Component({
   selector: 'app-header',

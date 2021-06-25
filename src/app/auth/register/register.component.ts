@@ -2,7 +2,7 @@ import { Input, Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { RegisterServiceService } from '../../services/register-service.service';
-import { ToastComponent } from '../../toast/toast.component';
+import { ToastComponent } from 'src/app/dashboard/toast/toast.component';
 import { Router } from '@angular/router';
 
 @Component({

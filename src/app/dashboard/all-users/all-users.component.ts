@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersServiceService } from '../services/users-service.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ExternalTweetsComponent } from '../external-tweets/external-tweets.component';
-import { TweetServiceService } from '../services/tweet-service.service';
 import { ToastComponent } from '../toast/toast.component';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { UsersServiceService } from 'src/app/services/users-service.service';
+import { TweetServiceService } from 'src/app/services/tweet-service.service';
 
 @Component({
   selector: 'app-all-users',

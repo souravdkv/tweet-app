@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { TweetServiceService } from '../services/tweet-service.service';
+import { TweetServiceService } from 'src/app/services/tweet-service.service';
 import { ToastComponent } from '../toast/toast.component';
 import * as moment from 'moment';
 

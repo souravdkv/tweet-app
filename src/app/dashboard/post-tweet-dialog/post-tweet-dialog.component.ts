@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
-import { TweetServiceService } from '../services/tweet-service.service';
+import { TweetServiceService } from 'src/app/services/tweet-service.service';
 import { ToastComponent } from '../toast/toast.component';
 
 @Component({

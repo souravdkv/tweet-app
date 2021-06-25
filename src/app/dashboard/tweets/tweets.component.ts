@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TweetServiceService } from '../services/tweet-service.service';
+import { TweetServiceService } from 'src/app/services/tweet-service.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PostTweetDialogComponent } from '../post-tweet-dialog/post-tweet-dialog.component';
 import { ToastComponent } from '../toast/toast.component';

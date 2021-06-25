@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TweetServiceService } from '../services/tweet-service.service';
+import { TweetServiceService } from 'src/app/services/tweet-service.service';
 import { ToastComponent } from '../toast/toast.component';
 import { TweetsComponent } from '../tweets/tweets.component';
 import { Router } from '@angular/router';
