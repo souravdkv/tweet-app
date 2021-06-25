@@ -37,7 +37,7 @@
         <mat-form-field class="m-t-4">
           <mat-label>Password</mat-label>
           <input matInput [type]="passwordVisibilty ? 'text' : 'password'" formControlName="password" minlength="8"
-            [errorStateMatcher]="matcher" />
+            [errorStateMatcher]="matcher" required=true />
           <span matSuffix class="pointer-cursor view-pswd" mat-icon-button
             (click)="passwordVisibilty = !passwordVisibilty">
             <ng-container *ngIf="!passwordVisibilty; else pwdVisibleTmpl">

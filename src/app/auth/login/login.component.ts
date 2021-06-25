@@ -1,7 +1,7 @@
 import { Input, Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { LoginServiceService } from '../services/login-service.service';
-import { ToastComponent } from '../toast/toast.component';
+import { LoginServiceService } from '../../services/login-service.service';
+import { ToastComponent } from '../../toast/toast.component';
 import { Router } from '@angular/router';
 
 

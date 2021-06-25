@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
@@ -23,7 +23,9 @@ import { PostTweetDialogComponent } from './post-tweet-dialog/post-tweet-dialog.
 import { UserTweetsComponent } from './user-tweets/user-tweets.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { ExternalTweetsComponent } from './external-tweets/external-tweets.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     UserTweetsComponent,
     AllUsersComponent,
     ExternalTweetsComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AuthLayoutComponent,
+    DashboardLayoutComponent
   ],
   imports: [
     BrowserModule,
