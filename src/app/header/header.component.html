@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="islogInUser">
     <mat-toolbar-row>
       <h1>Tweet App</h1>
       <span class="menu-spacer"></span>
@@ -7,11 +7,11 @@
         <a mat-button [routerLink]="'/my-tweets'"> My Tweets </a>
         <a mat-button [routerLink]="'/all-users'"> All Users </a>
         <a mat-button (click)="logOut()"> Logout </a>
-  
       </div>
     </mat-toolbar-row>
-  
-    <mat-toolbar-row>
-        <span style="font-size: 12px;">Welcome to Tweet Application.</span>
-      </mat-toolbar-row>
   </mat-toolbar>
+  <div class="row bg-light">
+    <div class="col-12">
+      <h3 class="text-center">Welcome to Tweet Application.</h3>
+    </div>
+  </div>

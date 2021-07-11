@@ -21,17 +21,12 @@ export class TweetsComponent implements OnInit {
     public toastComponent: ToastComponent,
     public router: Router) { }
 
-  ngOnInit() {
-    let username = localStorage.getItem("username");
-    if (username) {
-      this.tweetService.getAllTweets().subscribe(tweetItem => {
-        this.tweets = tweetItem;
-        this.updateTimeFromNow();
+    username: string;
 
-        if (this.tweets.length == 0) {
-          this.toastComponent.openSnackBar("No Tweets Found !!!")
-        }
-      })
+  ngOnInit() {
+    this.username = localStorage.getItem("username");
+    if (this.username) {
+      this.getAllTweets();
     }
     else {
       this.toastService.openSnackBar("please login first to view tweets")
@@ -45,10 +40,7 @@ export class TweetsComponent implements OnInit {
       width: '800px',
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.tweetService.getAllTweets().subscribe(tweetItem => {
-        this.tweets = tweetItem;
-        this.updateTimeFromNow();
-      })
+      this.getAllTweets();
     });
   }
 
@@ -56,10 +48,7 @@ export class TweetsComponent implements OnInit {
     let loggedInUser = localStorage.getItem("username")
     this.tweetService.likeTweet(loggedInUser, id).subscribe(likeItem => {
       this.toastComponent.openSnackBar("Liked")
-      this.tweetService.getAllTweets().subscribe(tweetItem => {
-        this.tweets = tweetItem;
-        this.updateTimeFromNow();
-      })
+      this.getAllTweets();
     }, error => {
       this.toastComponent.openSnackBar("Something went wrong !!!!")
     })
@@ -68,20 +57,41 @@ export class TweetsComponent implements OnInit {
   dislikeTweet(id) {
     let loggedInUser = localStorage.getItem("username")
     this.tweetService.dislikeTweet(loggedInUser, id).subscribe(dislikeItem => {
-      this.toastComponent.openSnackBar("Disliked")
-      this.tweetService.getAllTweets().subscribe(tweetItem => {
-        this.tweets = tweetItem;
-        this.updateTimeFromNow();
-      })
+      this.toastComponent.openSnackBar("Disliked");
+      this.getAllTweets();
     }, error => {
       this.toastComponent.openSnackBar("Something went wrong !!!!")
     })
   }
 
+  private getAllTweets() {
+    this.tweetService.getAllTweets().subscribe(tweetItem => {
+      if (tweetItem.length == 0) {
+        this.toastComponent.openSnackBar("No Tweets Found !!!");
+        return;
+      }
+      this.tweets = tweetItem;
+      this.updateTimeFromNow();
+    })
+  }
 
-  updateTimeFromNow(){
+
+  private updateTimeFromNow() {
     this.tweets.forEach(tweetItem =>{
       tweetItem.fromNow = moment(tweetItem.postTime * 1000).fromNow()
-    })
+    });
+    this.isLikedByUser();
+  }
+
+  private isLikedByUser() {
+    this.tweets.forEach((tweetItem, i)=> {
+      tweetItem = {
+        ...tweetItem,
+        likedByUser:  tweetItem.likes.filter(likedUsers => likedUsers.username === this.username ).length > 0
+      }
+      this.tweets[i] = tweetItem;
+    });
+    console.log(this.tweets);
+    
   }
 }

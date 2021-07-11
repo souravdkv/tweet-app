@@ -12,6 +12,8 @@ export class HeaderComponent implements OnInit {
   constructor(public toastService: ToastComponent,
     public router: Router) { }
 
+  islogInUser = true;
+
   user = localStorage.getItem("username")
 
   ngOnInit() {

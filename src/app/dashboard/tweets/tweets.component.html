@@ -1,9 +1,9 @@
+<div class="container">
+  <button class="btn btn-primary mt-3" mat-raised-button (click)="postTweet()">Post Tweet</button>
 
-<button mat-raised-button (click)="postTweet()">Post Tweet</button>
-
-<mat-card *ngFor="let list of tweets" class="example-card">
+  <mat-card *ngFor="let list of tweets" class="tweet-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
+      <div mat-card-avatar class="tweet-header-image"></div>
       <mat-card-subtitle>{{list.name}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
@@ -12,7 +12,13 @@
     </mat-card-content>
     <mat-card-subtitle>{{list.fromNow}}</mat-card-subtitle>
     <mat-card-actions>
-      <button mat-button (click)="likeTweet(list.id)">LIKE ({{list.likes.length}})</button>
-      <button mat-button (click)="dislikeTweet(list.id)">DISLIKE</button>
+      <!-- <button mat-button (click)="likeTweet(list.id)" *ngIf="!list.likedByUser">LIKE ({{list.likes.length}})</button> -->
+      <button mat-button (click)="list.likedByUser ? dislikeTweet(list.id) : likeTweet(list.id)">
+        <mat-icon aria-hidden="false" [color]="list.likedByUser ? 'primary' : '' " aria-label="like icon">
+          {{list.likedByUser ? 'thumb_up': 'thumb_up' }}
+        </mat-icon>
+        {{list.likes.length}}
+      </button>
     </mat-card-actions>
   </mat-card>
+</div>

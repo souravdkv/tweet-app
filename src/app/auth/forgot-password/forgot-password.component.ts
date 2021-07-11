@@ -16,9 +16,7 @@ export class ForgotPasswordComponent implements OnInit {
     public toastComponent: ToastComponent) { }
 
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-    phoneNumber: new FormControl('', Validators.pattern('^[0-9]*$'))
+    username: new FormControl('')
   });
 
   ngOnInit() {
@@ -28,8 +26,8 @@ export class ForgotPasswordComponent implements OnInit {
 
   forgotPassword() {
     let body = {
-      "password": this.form.get('password').value,
-      "phoneNumber": this.form.get('phoneNumber').value
+      "password": "",
+      "phoneNumber": ""
     }
     this.loginService.forgotPassword(this.form.get('username').value, body).subscribe(forgotItem => {
       console.log(forgotItem)
