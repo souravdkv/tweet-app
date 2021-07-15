@@ -124,6 +124,7 @@ export class CommentsComponent implements OnInit {
         ...reply,
         showDelete: reply.username === this.username
       }
+      reply.fromNow = moment(reply.replyTime * 1000).fromNow()
       this.tweets.replies[index] = reply;
     });
   }

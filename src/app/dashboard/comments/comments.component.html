@@ -35,10 +35,13 @@
                         {{reply.message}}
                     </mat-card-content>
                     <mat-card-actions>
+                        <mat-card-subtitle>{{reply.fromNow}}</mat-card-subtitle>
                         Commented by {{reply.name}}
+                    <button mat-button>
                         <mat-icon *ngIf="reply.showDelete" (click)="deleteReply(reply.id)">
                             delete_forever
                         </mat-icon>
+                    </button>
                     </mat-card-actions>
                 </mat-card>
             </ng-container>
