@@ -1,0 +1,56 @@
+<div class="container">
+    <mat-card class="tweet-card mt-4">
+        <mat-card-header>
+            <div mat-card-avatar class="tweet-header-image"></div>
+            <mat-card-subtitle>{{tweets.name}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{tweets.tweets}}
+            </p>
+        </mat-card-content>
+        <mat-card-subtitle>{{tweets.fromNow}}</mat-card-subtitle>
+        <mat-card-actions>
+            <!-- <button mat-button (click)="likeTweet(tweets.id)" *ngIf="!tweets.likedByUser">LIKE ({{tweets.likes.length}})</button> -->
+            <button mat-button (click)="tweets.likedByUser ? dislikeTweet(tweets.id) : likeTweet(tweets.id)">
+                <mat-icon aria-hidden="false" [color]="tweets.likedByUser ? 'primary' : '' " aria-label="like icon">
+                    {{tweets.likedByUser ? 'thumb_up': 'thumb_up' }}
+                </mat-icon>
+                {{tweets.likes.length}}
+            </button>
+            <button mat-button>
+                <mat-icon aria-hidden="false">
+                    message
+                </mat-icon>
+            </button>
+            <button mat-button (click)="deleteTweet()" *ngIf="tweets.showDelete">
+                <mat-icon aria-hidden="false">
+                    delete_forever
+                </mat-icon>
+            </button>
+        </mat-card-actions>
+        <mat-card-content>
+            <ng-container *ngFor="let reply of tweets.replies">
+                <mat-card class="tweet-card">
+                    <mat-card-content>
+                        {{reply.message}}
+                    </mat-card-content>
+                    <mat-card-actions>
+                        Commented by {{reply.name}}
+                        <mat-icon *ngIf="reply.showDelete" (click)="deleteReply(reply.id)">
+                            delete_forever
+                        </mat-icon>
+                    </mat-card-actions>
+                </mat-card>
+            </ng-container>
+            <form [formGroup]="commentForm" (ngSubmit)="replyComment()" class="mt-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Comment</mat-label>
+                    <input type="text" matInput placeholder="Comment" formControlName="reply" required>
+                </mat-form-field>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!commentForm.valid">
+                    Comment
+                </button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

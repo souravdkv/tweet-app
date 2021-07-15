@@ -38,4 +38,15 @@ export class TweetServiceService {
   dislikeTweet(username,tweetID):Observable<any>{
     return this.http.put<any>(`${APIURLS.baseUrl}/${username}/dislike/${tweetID}`,{observe:'response' , withCredentials:true});
   }
+
+  getTweetDetails(id):Observable<any>{
+    return this.http.get(`${APIURLS.baseUrl}/tweet/${id}`);
+  }
+  deleteUserTweetReply(username,tweetId, replyId):Observable<any>{
+    return this.http.delete(`${APIURLS.baseUrl}/${username}/reply/${tweetId}/${replyId}`);
+  }
+
+  replyComment(username: string, tweetId: string, comment: string): Observable<any> {
+    return this.http.post<any>(`${APIURLS.baseUrl}/${username}/reply/${tweetId}`, comment);
+  }
 }

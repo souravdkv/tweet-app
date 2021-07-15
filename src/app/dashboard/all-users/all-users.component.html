@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <form [formGroup]="searchUserForm">
     <p>
       <mat-form-field>
@@ -7,7 +7,6 @@
       <button mat-button [disabled]="searchUserForm.invalid" (click)="searchUser()">Search</button>
     </p>
   </form>
-</div>
 
 <mat-card *ngFor="let list of users" class="example-card">
     <mat-card-header>
@@ -19,3 +18,5 @@
       <button mat-button (click)="viewTweets(list.username)">View Tweets</button>
     </mat-card-actions>
   </mat-card>
+
+</div>

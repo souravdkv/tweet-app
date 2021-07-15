@@ -26,6 +26,7 @@ import { PostTweetDialogComponent } from './dashboard/post-tweet-dialog/post-twe
 import { UserTweetsComponent } from './dashboard/user-tweets/user-tweets.component';
 import { AllUsersComponent } from './dashboard/all-users/all-users.component';
 import { ExternalTweetsComponent } from './dashboard/external-tweets/external-tweets.component';
+import { CommentsComponent } from './dashboard/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ExternalTweetsComponent } from './dashboard/external-tweets/external-tw
     ExternalTweetsComponent,
     ForgotPasswordComponent,
     AuthLayoutComponent,
-    DashboardLayoutComponent
+    DashboardLayoutComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

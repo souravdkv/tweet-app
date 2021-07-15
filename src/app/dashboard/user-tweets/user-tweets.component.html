@@ -1,14 +1,1 @@
-<mat-card *ngFor="let list of tweets" class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-subtitle>{{list.name}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>{{list.tweets}}
-      </p>
-    </mat-card-content>
-    <mat-card-subtitle>{{list.fromNow}}</mat-card-subtitle>
-    <mat-card-actions>
-      <button mat-button (click)="deleteTweet(list.id)">Delete</button>
-    </mat-card-actions>
-  </mat-card>
+<app-tweets [showOnlyMyTweet]="true"></app-tweets>

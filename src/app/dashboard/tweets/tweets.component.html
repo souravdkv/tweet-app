@@ -19,6 +19,17 @@
         </mat-icon>
         {{list.likes.length}}
       </button>
+      <button mat-button (click)="goToComments(list.id)">
+        {{list.replies.length}}
+        <mat-icon aria-hidden="false">
+          message
+        </mat-icon>
+      </button>
+      <button mat-button (click)="deleteTweet(list.id)" *ngIf="list.showDelete">
+        <mat-icon aria-hidden="false">
+          delete_forever
+        </mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

@@ -48,14 +48,11 @@ export class AllUsersComponent implements OnInit {
   }
 
   viewTweets(user) {
-    this.tweetService.getUserTweet(user).subscribe(tweetItem => {
-      const dialogRef = this.dialog.open(ExternalTweetsComponent, {
-        width: '500px',
-        data: [tweetItem, user],
-        height: '500px'
-      });
-    })
-
+    const dialogRef = this.dialog.open(ExternalTweetsComponent, {
+      width: '500px',
+      data: [user],
+      height: '500px'
+    });
   }
 
   searchUser() {
